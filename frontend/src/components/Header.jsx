@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/userApiSlice';
 import { logout } from '../slices/authSlice';
+import SearchBox from './SearchBox';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -38,6 +39,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <SearchBox />
               <Nav.Link as={Link} to="/cart">
                 <FaShoppingCart /> Cart{' '}
                 {cartItems.length > 0 && (
@@ -64,7 +66,7 @@ const Header = () => {
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title="Admin" id="adminmenu">
-                  <NavDropdown.Item as={Link} to="/admin/productlist">
+                  <NavDropdown.Item as={Link} to="/admin/productlist/page/1">
                     Products
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/admin/userlist">
